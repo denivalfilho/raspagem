@@ -1,0 +1,1 @@
+# Farei a raspagem de notícias do site do IFSP, onde eu trabalho.
