@@ -3,13 +3,14 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = "https://www.ifsp.edu.br/index.php/ultimas-noticias"
+url = "https://www.ifsp.edu.br/ultimas-noticias"
+headers = {'User-Agent': 'Mozilla/5.0'}
 
-headers = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.37'
-}
+resposta = requests.get(url, headers=headers)
 
-try:
-    resposta = requests.get(url, headers=headers)
-    sopa = BeautifulSoup(resposta.text, 'html.parser')
-    noticias = sopa.find_all('h2')
+sopa = BeautifulSoup(resposta.text, 'html.parser')
+
+noticias = sopa.find_all('h2')
+
+for n in noticias:
+    print(n.get_text().strip())
