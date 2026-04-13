@@ -12,5 +12,5 @@ sopa = BeautifulSoup(resposta.text, 'html.parser')
 
 noticias = sopa.find_all('h2')
 
-for n in noticias:
+for n in noticias[7:]: #pular as 7 primeiras que são menus
     print(n.get_text().strip())
