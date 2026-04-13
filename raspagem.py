@@ -3,6 +3,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-def conectar_ao_ifsp():
-    url = "https://www.ifsp.edu.br/index.php/ultimas-noticias" 
-    
+url = "https://www.ifsp.edu.br/index.php/ultimas-noticias"
+
+resposta = requests.get(url)
+
+sopa = BeautifulSoup(resposta.text, 'html.parser')
