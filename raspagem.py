@@ -10,7 +10,9 @@ resposta = requests.get(url, headers=headers)
 
 sopa = BeautifulSoup(resposta.text, 'html.parser')
 
-noticias = sopa.find_all('h2')
+noticias = sopa.find_all('h2', class_='tileHeadline') # Em vez de pegar todos os h2, pegamos apenas h2 que estão dentro da classe 'tileHeadline'
 
-for n in noticias[7:]: #pular as 7 primeiras que são menus
-    print(n.get_text().strip())
+print(f"--- Foram encontradas {len(noticias)} notícias ---")
+
+for n in noticias:
+    print(n.get_text())
