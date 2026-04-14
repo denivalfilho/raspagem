@@ -15,4 +15,5 @@ noticias = sopa.find_all('h2', class_='tileHeadline') # Em vez de pegar todos os
 print(f"--- Foram encontradas {len(noticias)} notícias ---")
 
 for n in noticias:
-    print(n.get_text())
+    titulo = n.get_text().strip()
+    print(f"• {titulo}")
