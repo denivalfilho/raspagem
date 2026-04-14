@@ -1,4 +1,4 @@
-# Farei a raspagem de notícias do site do IFSP, onde eu trabalho.
+# Esta é uma raspagem de notícias do site do Instituto Federal de São Paulo.
 
 import requests
 from bs4 import BeautifulSoup
@@ -16,4 +16,9 @@ print(f"--- Foram encontradas {len(noticias)} notícias ---")
 
 for n in noticias:
     titulo = n.get_text().strip()
-    print(f"• {titulo}")
+    link_tag = n.find('a')
+    
+    if link_tag:
+        link_completo = "https://www.ifsp.edu.br" + link_tag['href']
+        print(f"Título: {titulo}")
+        print(f"Link: {link_completo}\n")
