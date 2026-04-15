@@ -1,5 +1,3 @@
-# Esta é uma raspagem de notícias do site do Instituto Federal de São Paulo.
-
 import requests
 from bs4 import BeautifulSoup
 
@@ -10,10 +8,7 @@ resposta = requests.get(url, headers=headers)
 
 sopa = BeautifulSoup(resposta.text, 'html.parser')
 
-noticias = sopa.find_all('h2', class_='tileHeadline') # Em vez de pegar todos os h2, pegamos apenas h2 que estão dentro da classe 'tileHeadline'
-
-print(f"--- Foram encontradas {len(noticias)} notícias ---")
-
+noticias = sopa.find_all('h2', class_='tileHeadline')
 for n in noticias:
     titulo = n.get_text().strip()
     link_tag = n.find('a')
